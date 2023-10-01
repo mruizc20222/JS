@@ -1,14 +1,15 @@
- const letters=['a','b','c','d','e'];
+ const letters=["a","b","c","d"];
 
+// Con funciones por expresión
  const f=function(){
-  console.log("un elemento.");
+  console.log("Un Elemento.");
  }
  letters.forEach(f);
 
+// Con funciones anónimas
+letters.forEach(function() {
+   console.log("Un Elemento");
+ });
 
-
- letters.forEach(function() {
-    console.log("un elemento");
- })
-
- letters.forEach(()=>console.log("un elemento"));
+// Con funciones flecha
+letters.forEach(()=>console.log("Un Elemento"));
