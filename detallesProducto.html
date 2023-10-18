@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Detalles del Producto</title>
+</head>
+<body>
+  <header>
+    <h1>Detalles del Producto</h1>
+  </header>
+  <div class="detalles-producto">
+    <!-- Aquí mostrarás los detalles del producto utilizando JavaScript -->
+  </div>
+  <script>
+    // Obtén el ID del producto de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+
+    // Función para obtener los detalles del producto
+    async function obtenerDetallesProducto(id) {
+      try {
+        const response = await fetch(`https://www.fakestoreapi.com/products/${productId}`);
+        if (!response.ok) {
+          throw new Error('Error en la solicitud');
+        }
+        const producto = await response.json();
+        
+        // Muestra los detalles del producto en la página
+        const detallesContainer = document.querySelector(".detalles-producto");
+        detallesContainer.innerHTML = `
+          <h2>${producto.title}</h2>
+          <img src="${producto.image}" alt="${producto.title}">
+          <p><strong>Precio:</strong> $${producto.price}</p>
+          <p><strong>Descripción:</strong> ${producto.description}</p>
+        `;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    obtenerDetallesProducto(productId);
+  </script>
+</body>
+</html>
