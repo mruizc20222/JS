@@ -3,27 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Tienda Virtual</title>
+  <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <style>
-    /* Estilo para la clase "contenedor" y "card" (como en tu código anterior) */
+    /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
+      La propiedad flex-wrap: wrap permite que los cards se envuelvan a la siguiente línea cuando no caben en la pantalla, 
+	  y justify-content: space-between distribuye el espacio horizontalmente entre los elementos.
+      Además, hemos establecido un ancho fijo para cada card utilizando flex-basis para que ocupen aproximadamente un tercio 
+	  del ancho del contenedor, y hemos añadido un margen para separarlos. 
+	  Esto crea una disposición horizontal ordenada de los cards. Ajusta los valores según tus necesidades de diseño.
+    */
+    /* Estilo para la clase "contenedor" */
     .contenedor {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: flex; /* Muestra los elementos hijos en línea (horizontalmente) */
+      flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea cuando no caben en la pantalla */
+      justify-content: space-between; /* Distribuye el espacio horizontalmente entre los elementos */
     }
 
+    /* Estilo para los cards */
     .card {
-      margin: 5px;
-      border: 1px solid #c1c2ca;
-      padding: 16px;
-      border-radius: 20px;
+      margin: 5px; /* Agrega un margen entre los cards */
+	  border: 1px solid #c1c2ca;
+	  padding: 16px;
+	  border-radius: 20px;
     }
+	
   </style>
 </head>
+
 <body>
+  <h1>Productos</h1> <a href="carritodecompra.html"> Carrito de Compra </a>
   <div class="contenedor"></div>
-  <div class="detalles" style="display: none;"></div>
+
   <script>
     // Función para obtener datos de la API ficticia
     async function obtenerProductos() {
@@ -40,26 +51,26 @@
       }
     }
 
-
     document.addEventListener("DOMContentLoaded", async () => {
       const contenedor = document.querySelector(".contenedor");
       const products = await obtenerProductos();
 
       let productos = "";
       products.forEach((product) => {
+		localStorage.setItem(`product_${product.id}`, JSON.stringify(product));
         productos += `
           <div class="card" style="width: 18rem;">
-            <img src="${product.image}" style="width: 100px" class="card-img-top" alt="${product.title}">
+            <img src="${product.image}" style="width: 100px" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-text">${product.title}</h5>
-              <p class="card-text">$${product.price}</p>
-              <a href="detalles.html?id=${product.id}" class="btn btn-primary">Ver detalles</a>
+              <p class="card-text">${product.price}</p>
+              <a href="detalleproducto.html?id=${product.id}" class="btn btn-primary">Ver Detalle</a>
             </div>
           </div>
         `;
       });
 
-      contenedor.innerHTML = productos;
+      contenedor.innerHTML = productos; // Agrega el contenido al elemento con la clase "contenedor"
     });
   </script>
 </body>
