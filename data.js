@@ -2,7 +2,7 @@ const data = [
   {
     "id": 1,
     "title": "Collar para perros graduable, resistnte al agua",
-    "price": 109.95,
+    "price": 109,
     "description": "Tiras reflectantes en la parte delantera y trasera para mayor seguridad y visibilidad. asa de trfico suave al tacto para mayor seguridad cuando sea necesario",
     "category": "caninos",
     "image": "collar.jpg",
