@@ -35,7 +35,7 @@ const data = [
       "count": 500
     }
   },
-  {
+  */{
     "id": 4,
     "title": "Mens Casual Slim Fit",
     "price": 15.99,
@@ -238,7 +238,8 @@ const data = [
       "rate": 3.6,
       "count": 145
     }
-  }
+  }/*
+      
 ]
  
 module.exports = data;
